@@ -1,5 +1,6 @@
 import os
 import csv
+import sys
 
 # Change directory to the directory of current python script
 current_path = os.path.dirname(os.path.abspath(__file__))
@@ -12,6 +13,7 @@ sum_change = 0 #total change
 profit_changes = [] # holds profit changes 
 max_increase = [0, count] 
 max_decrease = [0, count]
+
 
 # Open and read csv
 with open(file, newline="") as csv_file:
@@ -38,10 +40,16 @@ with open(file, newline="") as csv_file:
             max_decrease[1] = profit_change # greatest decrease 
 
         average_change = sum_change/count 
-      
-pattern = '-'
-print(f"Financial Analysis \n{pattern * 30} ")
+
+print(f"Financial Analysis \n{'-' * 30}")
 print(f"Total Months: {count} \nTotal: {'${:.1f}'.format(sum)}")
 print(f"Average Change: {'${:.2f}'.format(average_change)}")
 print(f"Greatest Increase in Profits: {max_increase[0]} ({'${:.2f}'.format(max_increase[1])}) \nGreatest Decrease in Profits: {max_decrease[0]} ({'${:.2f}'.format(max_decrease[1])}) ")
 
+output_file = os.path.join('Analysis', 'financial_analysis.txt')
+sys.stdout = open(output_file, "w")
+print(f"Financial Analysis \n{'-' * 30}")
+print(f"Total Months: {count} \nTotal: {'${:.1f}'.format(sum)}")
+print(f"Average Change: {'${:.2f}'.format(average_change)}")
+print(f"Greatest Increase in Profits: {max_increase[0]} ({'${:.2f}'.format(max_increase[1])}) \nGreatest Decrease in Profits: {max_decrease[0]} ({'${:.2f}'.format(max_decrease[1])}) ")
+sys.stdout.close()
