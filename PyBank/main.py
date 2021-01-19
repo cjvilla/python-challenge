@@ -14,7 +14,6 @@ profit_changes = [] # holds profit changes
 max_increase = [0, count] 
 max_decrease = [0, count]
 
-
 # Open and read csv
 with open(file, newline="") as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=",")
