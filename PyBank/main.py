@@ -49,5 +49,5 @@ find_finances(file)
 
 output_file = os.path.join('Analysis', 'financial_analysis.txt')
 sys.stdout = open(output_file, "w")
-print(find_finances(file))
+find_finances(file)
 sys.stdout.close()
